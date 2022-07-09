@@ -1,3 +1,28 @@
 <resources>
     <string name="app_name">Learning</string>
+    <string name="not_available">N/A</string>
+
+    <!-- ring indicator -->
+
+    <string name="ring_indicator_remaining_capacity_percent">%d%%</string>
+    <plurals name="ring_indicator_days_in_use_format">
+        <item quantity="one">%d day in use</item>
+        <item quantity="other">%d days in use</item>
+    </plurals>
+    <string name="ring_indicator_remaining_capacity_label">Remaining capacity</string>
+
+
+    <!-- detailsCard-->
+
+    <string name="details_card_total_label">Total</string>
+    <string name="details_card_remaining_label">Remaining</string>
+    <string name="details_card_installed_on_label">Installed on</string>
+
+    <!-- details card -->
+    <string name="details_card_edit">Edit</string>
+    <string name="details_card_clear_data">Clear data</string>
+    <string name="details_card_cancel">Cancel</string>
+    <string name="details_card_save">Save</string>
+
+
 </resources>
