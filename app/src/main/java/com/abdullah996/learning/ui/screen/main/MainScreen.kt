@@ -1,23 +1,19 @@
 package com.abdullah996.learning.ui.screen.main
 
-import androidx.compose.foundation.border
+import android.util.Log
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.abdullah996.learning.ui.components.detailscard.DetailsCard
-import com.abdullah996.learning.ui.components.ringindicator.Ring
 import com.abdullah996.learning.ui.components.ringindicator.RingIndicator
-import com.abdullah996.learning.ui.theme.ColorRingBg
-import com.abdullah996.learning.ui.theme.ColorRingFg
 import com.abdullah996.learning.ui.theme.LearningTheme
-import com.abdullah996.learning.ui.utils.debugBorder
 
+
+@ExperimentalAnimationApi
 @Composable
 fun MainScreen(viewModel: MainViewModel){
 
@@ -36,7 +32,7 @@ fun MainScreen(viewModel: MainViewModel){
 //                }
 //
 //            }
-            Column {
+            Column(modifier = Modifier.padding(16.dp)) {
 
 
                 RingIndicator(
@@ -44,9 +40,24 @@ fun MainScreen(viewModel: MainViewModel){
                         .fillMaxWidth()
                         .height(300.dp), fill = 1f, daysInUse = 7
                 )
-                DetailsCard(modifier = Modifier.padding(top = 96.dp),editState = true)
+                DetailsCard(
+                    modifier = Modifier.padding(top = 96.dp),
+                    editMode = true,
+                    totalCapacity =null,
+                    remainingCapacity = null,
+                    installedOnFormatted = null,
+                    onEdit = { log("On Edit")},
+                    onCancel = { log("On Cancel")},
+                    onClearData = { log("On Clear data")},
+                    onSave = { log("On Save")},
+
+                )
             }
             
         }
     }
+}
+
+private fun log(string: String){
+    Log.d("MainScreen",string)
 }
