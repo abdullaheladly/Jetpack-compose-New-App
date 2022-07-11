@@ -1,6 +1,5 @@
 package com.abdullah996.learning.ui.components.detailscard
 
-import android.util.Log
 import androidx.compose.animation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
@@ -10,8 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.abdullah996.learning.R
-import com.abdullah996.learning.ui.components.content.DetailsContent
-import com.abdullah996.learning.ui.components.content.item.DetailsContentItem
+import com.abdullah996.learning.ui.components.detailscard.content.DetailsContent
 
 
 @ExperimentalAnimationApi
@@ -19,9 +17,16 @@ import com.abdullah996.learning.ui.components.content.item.DetailsContentItem
 fun DetailsCard(
     modifier: Modifier =Modifier,
     editMode:Boolean,
+
+    //total capacity
     totalCapacity:Int?,
+    onTotalCapacityClick:()->Unit,
+    //remaining
     remainingCapacity:Int?,
+    onRemainingCapacityClick:()->Unit,
+    //installedOn
     installedOnFormatted:String?,
+    onInstalledOnClick:()->Unit,
     // callbacks
     onEdit:()->Unit,
     onClearData:()->Unit,
@@ -31,9 +36,24 @@ fun DetailsCard(
     Card(modifier = modifier) {
         Column(modifier = Modifier.padding(8.dp)) {
             //details content
-            DetailsContent(totalCapacity = totalCapacity,remainingCapacity = remainingCapacity,installedOnFormatted = installedOnFormatted)
+            DetailsContent(
+                totalCapacity = totalCapacity,
+                remainingCapacity = remainingCapacity,
+                installedOnFormatted = installedOnFormatted,
+                onTotalCapacityClick = onTotalCapacityClick,
+                onRemainingCapacityClick = onRemainingCapacityClick,
+                onInstalledOnClick = onInstalledOnClick,
+                editMode = editMode
+            )
             //details action
-            DetailsActions(modifier = Modifier.padding(top = 8.dp),editMode = editMode,onEdit = onEdit,onCancel = onCancel,onClearData = onClearData,onSave = onSave)
+            DetailsActions(
+                modifier = Modifier.padding(top = 8.dp),
+                editMode = editMode,
+                onEdit = onEdit,
+                onCancel = onCancel,
+                onClearData = onClearData,
+                onSave = onSave
+            )
            
         }
     }

@@ -3,9 +3,11 @@ package com.abdullah996.learning.di.application
 import android.content.Context
 import com.abdullah996.learning.Application
 import com.abdullah996.learning.PlaceHolderDependency
+import com.abdullah996.learning.common.data.DateHelper
 import com.abdullah996.learning.di.DiConstants.APPLICATION_CONTEXT
 import dagger.Module
 import dagger.Provides
+import dagger.Reusable
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Named
@@ -22,4 +24,9 @@ class ApplicationModule {
     @Provides
     @Singleton
     fun providePlaceHolderDependency():PlaceHolderDependency= PlaceHolderDependency()
+
+
+    @Provides
+    @Reusable
+    fun provideDateHelper()=DateHelper()
 }

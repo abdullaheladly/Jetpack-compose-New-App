@@ -8,6 +8,7 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.abdullah996.learning.ui.components.capacityinputdialog.CapacityInputDialog
 import com.abdullah996.learning.ui.components.detailscard.DetailsCard
 import com.abdullah996.learning.ui.components.ringindicator.RingIndicator
 import com.abdullah996.learning.ui.theme.LearningTheme
@@ -38,21 +39,27 @@ fun MainScreen(viewModel: MainViewModel){
                 RingIndicator(
                     Modifier
                         .fillMaxWidth()
-                        .height(300.dp), fill = 1f, daysInUse = 7
+                        .height(300.dp), fill = viewModel.waterFill, daysInUse = viewModel.daysInUse
                 )
                 DetailsCard(
                     modifier = Modifier.padding(top = 96.dp),
-                    editMode = true,
-                    totalCapacity =null,
-                    remainingCapacity = null,
-                    installedOnFormatted = null,
-                    onEdit = { log("On Edit")},
-                    onCancel = { log("On Cancel")},
-                    onClearData = { log("On Clear data")},
-                    onSave = { log("On Save")},
+                    editMode = viewModel.editMode,
+                    totalCapacity =viewModel.totalCapacity,
+                    remainingCapacity = viewModel.remainingCapacity,
+                    installedOnFormatted = viewModel.installedOnFormatted,
+                    onEdit = viewModel::onEdit,
+                    onCancel = viewModel::onCancel,
+                    onClearData = viewModel::onClearData,
+                    onSave = viewModel::onSave,
+                    onInstalledOnClick = viewModel::onInstalledOnClicked,
+                    onTotalCapacityClick = viewModel::onTotalCapacityClicked,
+                    onRemainingCapacityClick = viewModel::onRemainingCapacityClicked
 
                 )
             }
+
+                CapacityInputDialog(config = viewModel.capacityInputDialogConfig)
+
             
         }
     }
